@@ -1,0 +1,27 @@
+@import "src/styles";
+
+.loading-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin: 1em 0;
+
+  .loading {
+    width: 24px;
+    height: 24px;
+    border: 2px solid $primary-color;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 50%;
+    animation: 1s loading-animation linear infinite;
+  }
+}
+
+@keyframes loading-animation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

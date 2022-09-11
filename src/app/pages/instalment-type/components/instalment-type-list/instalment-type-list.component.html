@@ -1,0 +1,31 @@
+<div class="instalment-type-list-container">
+  <div class="title-container">
+    <h3>Instalment Type List</h3>
+  </div>
+
+  <div class="instalment-type-lists">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>No.</th>
+        <th>Instalment Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="!loading && instalmentTypes.length > 0; else load">
+        <tr *ngFor="let data of instalmentTypes; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{data.instalmentType | titlecase}}</td>
+        </tr>
+      </ng-container>
+      <ng-template #load>
+        <app-loading></app-loading>
+      </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="instalment-type-count">
+    <span class="counter">Total Number of item: {{instalmentTypes.length}}</span>
+  </div>
+</div>

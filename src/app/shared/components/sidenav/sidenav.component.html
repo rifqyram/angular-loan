@@ -1,0 +1,31 @@
+<div class="sidenav">
+  <div class="logo-container">
+    <h1 class="logo-text" @fadeInOut *ngIf="collapsed"># Loan App</h1>
+    <div class="button-collapsed-container">
+      <i class="bi bi-chevron-left button-collapse" (click)="toggleCollapsed()"></i>
+    </div>
+  </div>
+
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-list" *ngFor="let data of navData">
+      <div class="tooltip" [tooltip]="data.label">
+        <a class="sidenav-nav-link" [routerLink]=[data.path] routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i [ngClass]="data.icon" class="icon"></i>
+          <span @fadeInOut *ngIf="collapsed" class="description">{{data.label}}</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="logout-sidenav">
+    <li class="sidenav-nav-logout">
+      <div class="tooltip" tooltip="Logout">
+        <a class="sidenav-nav-link">
+          <i class="bi bi-box-arrow-left icon"></i>
+          <span @fadeInOut *ngIf="collapsed" class="description">Logout</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+</div>

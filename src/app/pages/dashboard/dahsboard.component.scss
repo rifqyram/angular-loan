@@ -1,0 +1,14 @@
+@import "src/styles";
+
+.dashboard-container {
+  width: 100% ;
+
+  .dashboard-welcome-container {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 12px;
+    color: $active-text-color;
+  }
+}

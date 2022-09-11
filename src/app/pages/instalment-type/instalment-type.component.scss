@@ -1,0 +1,11 @@
+@import "src/styles";
+
+.instalment-type-container {
+  .welcome-instalment-type-container {
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 12px;
+    color: $active-text-color;
+  }
+}

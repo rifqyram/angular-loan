@@ -1,0 +1,111 @@
+@import "src/styles";
+
+.sidenav {
+  margin: 0 17px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    position: relative;
+    height: 40px;
+
+    .logo-text {
+      color: $active-text-color;
+    }
+
+    .button-collapsed-container {
+      position: absolute;
+      right: -40px;
+      display: grid;
+      place-items: center;
+      background-color: $background-color;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+
+      .button-collapse {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: $primary-color;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+@mixin sidenav-nav {
+  .tooltip {
+
+    .sidenav-nav-link {
+      display: flex;
+      white-space: nowrap;
+      padding: 8px;
+      border-radius: 8px;
+      color: $text-color;
+      text-decoration: none;
+
+      &.active, &:hover {
+        background-color: $primary-active-color;
+        color: $primary-color;
+      }
+
+      .icon {
+        margin-left: 6px;
+      }
+
+      .description {
+        margin-left: .5em;
+      }
+    }
+  }
+}
+
+.sidenav {
+  .sidenav-nav {
+    list-style: none;
+    margin-top: 1em;
+
+    @include sidenav-nav;
+
+    .sidenav-nav-list {
+      margin: 1em 0;
+      font-size: 18px;
+      transition: .3s ease;
+      color: $text-color;
+
+      .sidenav-nav-list-sub {
+        list-style: none;
+
+        .sidenav-nav-list-sub-item {
+          .sidenav-nav-sub-link {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidenav {
+  .logout-sidenav {
+    display: flex;
+    list-style: none;
+    color: $text-color;
+    flex-grow: 1;
+    align-items: flex-end;
+    margin-bottom: 1em;
+
+    @include sidenav-nav;
+  }
+}

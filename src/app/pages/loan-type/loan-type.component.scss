@@ -1,0 +1,34 @@
+@import "src/styles";
+
+@mixin loan-type-container {
+  background-color: white;
+  padding: 1em;
+  border-radius: 12px;
+  margin-bottom: 1em;
+}
+
+.loan-type-container {
+
+  .welcome-loan-type-container {
+    @include loan-type-container;
+    color: $active-text-color;
+  }
+
+  .loan-type-main-content {
+    display: flex;
+    gap: 1em;
+    box-sizing: border-box;
+
+    .loan-type-list-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      @include loan-type-container;
+    }
+
+    .loan-type-form-container {
+      width: 400px;
+      @include loan-type-container;
+    }
+  }
+}

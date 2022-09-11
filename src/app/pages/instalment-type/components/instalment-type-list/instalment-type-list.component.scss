@@ -1,0 +1,30 @@
+@import "src/styles";
+
+.instalment-type-list-container {
+  background-color: white;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 12px;
+
+  .title-container {
+    justify-content: space-between;
+    color: $text-color;
+  }
+}
+
+.instalment-type-list-container {
+
+  .instalment-type-lists {
+    margin-top: 1.5em;
+
+    .table {
+      @include table();
+    }
+  }
+}
+
+.instalment-type-list-container {
+  .instalment-type-count {
+    color: $text-color;
+  }
+}

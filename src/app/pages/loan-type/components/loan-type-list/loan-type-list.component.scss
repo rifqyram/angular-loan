@@ -1,0 +1,40 @@
+@import "src/styles";
+
+.loan-type-list {
+
+  .loading-container {
+    width: 100%;
+  }
+
+  .loan-type-list-title {
+    color: $text-color;
+  }
+
+  .table {
+    @include table();
+
+    tbody tr td.actions {
+      display: flex;
+      gap: 1em;
+
+      button {
+        font-size: 1em;
+        padding: .5em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &.loan-type-btn-update {
+          background-color: $primary-active-color;
+          color: $primary-color;
+        }
+
+        &.loan-type-btn-delete {
+          background-color: $danger-color;
+          color: white;
+        }
+
+      }
+    }
+  }
+}

@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&display=swap');
+
+$primary-color: #696CFF;
+$primary-active-color: #696CFF4A;
+$text-color: #697A8D;
+$active-text-color: #566A7F;
+$background-color: #F2F3F4;
+
+$success-color: #71DD37;
+$danger-color: #FF3E1D;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
+  background-color: $background-color;
+}
+
+.tooltip-container {
+  padding: 6px;
+  border-radius: 8px;
+  animation: tooltip-slide .3s ease;
+  font-size: 12px;
+  position: absolute;
+  margin-top: 8px;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+@mixin table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  width: 100%;
+
+  thead {
+    tr {
+      background-color: $primary-color;
+      color: #ffffff;
+      text-align: left;
+
+      th {
+        padding: 8px;
+
+        &:first-child {
+          border-radius: 8px 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 8px 0 0;
+        }
+      }
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+
+    &:nth-of-type(even) {
+      background-color: $background-color;
+
+      &:last-of-type {
+        border-bottom: 2px solid $primary-active-color;
+      }
+
+      td {
+        color: $active-text-color;
+      }
+    }
+
+    td {
+      padding: 12px;
+      color: $text-color;
+
+      &:first-child {
+        width: 10%;
+      }
+    }
+  }
+}
+
+
+@keyframes tooltip-slide {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
