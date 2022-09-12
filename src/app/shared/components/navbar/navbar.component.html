@@ -1,0 +1,33 @@
+<div class="navbar">
+  <div class="logo-container">
+    <h1 class="logo-text"># Loan App</h1>
+  </div>
+
+  <ul class="navbar-nav">
+    <li class="navbar-nav-item" *ngFor="let data of navbarData">
+      <div class="tooltip" [tooltip]="data.label">
+        <a class="navbar-nav-link" [routerLink]="data.path" [routerLinkActive]="'active'"
+           [routerLinkActiveOptions]="{exact: true}">
+          <i *ngIf="collapsed" [ngClass]="data.icon"></i>
+          <span class="description">{{data.label}}</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+  <div class="user-section-container">
+    <div class="status-user">
+      <span>Online</span>
+    </div>
+    <div class="user-profile">
+      <img *ngIf="currentUser; else noUser" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="">
+      <ng-template #noUser><i class="bi bi-person icon"></i></ng-template>
+    </div>
+    <div class="user-setting">
+      <span [routerLink]="['/profile-setting']">View Profile</span>
+    </div>
+    <div class="user-logout">
+      <span class="logout-text" (click)="onLogout()">Logout</span>
+    </div>
+  </div>
+</div>

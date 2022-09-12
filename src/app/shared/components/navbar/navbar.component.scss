@@ -1,0 +1,83 @@
+@import "src/styles";
+
+:host {
+  width: 100%;
+
+  .navbar {
+    display: flex;
+    max-width: 1220px;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    .logo-container {
+      color: $active-text-color;
+    }
+
+    .navbar-nav {
+      display: flex;
+      list-style: none;
+      width: 400px;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .navbar-nav-item .tooltip .navbar-nav-link {
+        text-decoration: none;
+        color: $text-color;
+
+        &.active, &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .user-section-container {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      color: $text-color;
+
+      .status-user {
+        background-color: $success-color;
+        color: white;
+        font-weight: bold;
+        padding: .4em;
+        border-radius: 8px;
+        user-select: none;
+        font-size: .9em;
+      }
+
+      .user-profile {
+        display: flex;
+        background-color: $active-text-color;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+        img {
+          width: 32px;
+          height: 32px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        .icon {
+          font-size: 24px;
+          color: white;
+        }
+      }
+
+      .user-setting {
+        cursor: pointer;
+      }
+
+      .user-logout {
+        cursor: pointer;
+      }
+    }
+  }
+}

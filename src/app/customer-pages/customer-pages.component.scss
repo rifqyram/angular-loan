@@ -1,0 +1,15 @@
+.customer-page-container {
+  .navbar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 80px;
+    position: sticky;
+  }
+
+  .main-content-container {
+    margin: 1em 0;
+    width: 100%;
+  }
+}

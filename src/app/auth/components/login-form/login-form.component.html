@@ -1,0 +1,25 @@
+<div class="login-form-container">
+  <div class="login-form">
+    <div class="form-title-container">
+      <div class="logo-text">#Loan App</div>
+      <h2>Sign In</h2>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input [formControlName]="formField.email" type="email" name="email" id="email" placeholder="example@mail.com">
+      <input [formControlName]="formField.password" [type]="'password'" name="password" id="password" placeholder="Password">
+      <div class="check-show-password">
+        <input type="checkbox" name="show-password" id="show-password">
+        <label for="show-password">Show Password</label>
+      </div>
+      <button *ngIf="!loading; else load" class="button-login" type="submit">Register</button>
+      <ng-template #load>
+        <button class="button-login-loading"><app-loading></app-loading></button>
+      </ng-template>    </form>
+
+    <div class="register-btn-container">
+      <span>Don't Have Loan App Account?</span>
+      <button class="register-btn" [routerLink]="['/register']">Register</button>
+    </div>
+  </div>
+</div>

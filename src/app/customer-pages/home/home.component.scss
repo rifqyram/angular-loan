@@ -1,0 +1,29 @@
+@import "src/styles";
+
+:host {
+  width: 90%;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1220px;
+  background-color: white;
+  padding: 1em;
+  border-radius: 8px;
+  color: $active-text-color;
+
+  .message-info.info {
+    background-color: $primary-color;
+    color: white;
+    padding: 1em;
+    border-radius: 8px;
+  }
+
+  .welcome-text-container {
+
+  }
+}

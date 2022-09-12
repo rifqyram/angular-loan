@@ -1,0 +1,24 @@
+.admin-page-container {
+  display: flex;
+  width: 100%;
+
+  .sidenav-container {
+    width: 80px;
+    height: 100vh;
+    background-color: white;
+    transition: .6s ease;
+    box-shadow: 1px 0 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 0 8px 8px 0;
+
+    &.sidenav-container-collapsed {
+      width: 300px;
+      transition: .6s ease;
+      z-index: 1;
+    }
+  }
+
+  .main-container {
+    flex-grow: 1;
+    margin: 24px 48px;
+  }
+}
