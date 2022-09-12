@@ -45,28 +45,26 @@
 }
 
 @mixin sidenav-nav {
-  .tooltip {
 
-    .sidenav-nav-link {
-      display: flex;
-      white-space: nowrap;
-      padding: 8px;
-      border-radius: 8px;
-      color: $text-color;
-      text-decoration: none;
+  .sidenav-nav-link {
+    display: flex;
+    white-space: nowrap;
+    padding: 8px;
+    border-radius: 8px;
+    color: $text-color;
+    text-decoration: none;
 
-      &.active, &:hover {
-        background-color: $primary-active-color;
-        color: $primary-color;
-      }
+    &.active, &:hover {
+      background-color: $primary-active-color;
+      color: $primary-color;
+    }
 
-      .icon {
-        margin-left: 6px;
-      }
+    .icon {
+      margin-left: 6px;
+    }
 
-      .description {
-        margin-left: .5em;
-      }
+    .description {
+      margin-left: .5em;
     }
   }
 }
@@ -105,6 +103,7 @@
     flex-grow: 1;
     align-items: flex-end;
     margin-bottom: 1em;
+    cursor: pointer;
 
     @include sidenav-nav;
   }

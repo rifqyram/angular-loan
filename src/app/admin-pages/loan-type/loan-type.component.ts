@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoanType} from "./model/LoanType";
 
 @Component({
   selector: 'app-loan-type',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-type.component.scss']
 })
 export class LoanTypeComponent implements OnInit {
+  loanType?: LoanType;
 
   constructor() { }
 

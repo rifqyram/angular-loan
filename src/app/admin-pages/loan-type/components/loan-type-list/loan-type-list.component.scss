@@ -1,10 +1,7 @@
 @import "src/styles";
 
 .loan-type-list {
-
-  .loading-container {
-    width: 100%;
-  }
+  display: grid;
 
   .loan-type-list-title {
     color: $text-color;

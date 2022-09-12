@@ -14,7 +14,7 @@ export class LoanTypeService {
   constructor(private readonly http: HttpClient) {
   }
 
-  create(loanType: LoanTypeForm): Observable<CommonResponse<LoanType>> {
+  create(loanType: LoanType): Observable<CommonResponse<LoanType>> {
     return this.http.post<any>('/api/loan-types', loanType);
   }
 
@@ -22,7 +22,15 @@ export class LoanTypeService {
     return this.http.get<CommonResponse<LoanType>>(`/api/loan-types/${id}`);
   }
 
-  getAll(): Observable<CommonResponse<LoanType>> {
-    return this.http.get<CommonResponse<LoanType>>('/api/loan-types');
+  getAll(): Observable<CommonResponse<LoanType[]>> {
+    return this.http.get<CommonResponse<LoanType[]>>('/api/loan-types');
+  }
+
+  update(loanType: LoanType): Observable<CommonResponse<LoanType>> {
+    return this.http.put<CommonResponse<LoanType>>(`/api/loan-types`, loanType)
+  }
+
+  delete(id: string): Observable<CommonResponse<any>> {
+    return this.http.delete<CommonResponse<any>>(`api/loan-types/${id}`);
   }
 }

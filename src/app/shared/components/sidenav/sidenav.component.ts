@@ -2,6 +2,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {INavData} from "./model/INavData";
 import { navData } from './model/NavData';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {AuthService} from "../../../auth/service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sidenav',
@@ -30,7 +32,7 @@ export class SidenavComponent implements OnInit {
   navData: INavData[] = navData;
   @Output() onToggleSidenav = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private readonly service: AuthService, private readonly router: Router) { }
 
   ngOnInit(): void {
   }
@@ -38,5 +40,10 @@ export class SidenavComponent implements OnInit {
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
     this.onToggleSidenav.emit(this.collapsed);
+  }
+
+  async onLogout(): Promise<void> {
+    this.service.clearStorage();
+    await this.router.navigateByUrl('/login');
   }
 }

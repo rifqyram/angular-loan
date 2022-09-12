@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { LoanTypeListComponent } from './components/loan-type-list/loan-type-list.component';
 import { LoanTypeFormComponent } from './components/loan-type-form/loan-type-form.component';
 import {SharedModule} from "../../shared/shared.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -17,7 +18,8 @@ import {SharedModule} from "../../shared/shared.module";
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class LoanTypeModule { }
