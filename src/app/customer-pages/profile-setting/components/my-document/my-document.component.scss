@@ -1,0 +1,108 @@
+@import "src/styles";
+
+@import "src/styles";
+
+.my-document-container {
+  margin: 1em auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+
+  .form-my-document-container {
+    margin: 0 1em;
+
+    .title-form-my-document {
+      color: $active-text-color;
+      border-bottom: 1px solid $background-color;
+      padding-bottom: .5em;
+    }
+
+    .my-document-title {
+      color: $text-color;
+      margin: 1em 0;
+    }
+
+    .input-container.upload {
+      display: grid;
+      gap: 1em;
+
+      .label-upload {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        #document {
+          display: none;
+        }
+
+        .upload-document-btn {
+          padding: .75em 1em;
+          background-color: white;
+          color: $primary-color;
+          border: 1px solid $primary-color;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        .upload-description {
+          font-size: .9em;
+          color: $text-color;
+        }
+      }
+    }
+
+    .input-preview-file {
+      color: $text-color;
+
+      ol {
+        display: grid;
+        margin: 1em 0 1em 1em;
+        gap: 1em;
+      }
+
+    }
+
+    .button-submit-upload {
+      padding: .75em 1em;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 1em;
+      cursor: pointer;
+
+      &:disabled {
+        @include disable-button
+      }
+    }
+  }
+}
+
+.my-document-container {
+
+  .list-document-container {
+    display: grid;
+    margin: 0 1em;
+
+    .my-document-title {
+      color: $text-color;
+      margin: 1em 0;
+    }
+
+    .list-document {
+      display: grid;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-left: 1em;
+      color: $text-color;
+
+      .document-item {
+        .document-link-download {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

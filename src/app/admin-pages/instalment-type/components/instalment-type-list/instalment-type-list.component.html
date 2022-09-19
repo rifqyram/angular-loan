@@ -7,20 +7,17 @@
     <table class="table">
       <thead>
       <tr>
-        <th>No.</th>
+        <th>No</th>
         <th>Instalment Type</th>
       </tr>
       </thead>
       <tbody>
-      <ng-container *ngIf="!loading && instalmentTypes.length > 0; else load">
+      <ng-container *ngIf="instalmentTypes;">
         <tr *ngFor="let data of instalmentTypes; let i = index">
           <td>{{i + 1}}</td>
-          <td>{{data.instalmentType | titlecase}}</td>
+          <td>{{data.name | titlecase}}</td>
         </tr>
       </ng-container>
-      <ng-template #load>
-        <app-loading></app-loading>
-      </ng-template>
       </tbody>
     </table>
   </div>

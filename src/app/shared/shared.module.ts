@@ -5,8 +5,8 @@ import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TooltipDirective} from './directives/tooltip.directive';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
-import { LoadingComponent } from './components/loading/loading.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import {LoadingComponent} from './components/loading/loading.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +16,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoadingComponent,
     NavbarComponent,
   ],
-  exports: [
-    FooterComponent,
-    TooltipDirective,
-    SidenavComponent,
-    LoadingComponent,
-    NavbarComponent,
-  ],
+    exports: [
+        FooterComponent,
+        TooltipDirective,
+        SidenavComponent,
+        LoadingComponent,
+        NavbarComponent,
+    ],
   imports: [
     CommonModule,
     RouterModule,

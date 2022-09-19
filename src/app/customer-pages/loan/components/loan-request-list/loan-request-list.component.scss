@@ -1,0 +1,53 @@
+@import "src/styles";
+
+.loan-request-list-container {
+  .loan-request-list-title {
+    display: flex;
+    justify-content: space-between;
+
+    .title-text {
+      margin-bottom: 1em;
+    }
+
+    .create-request-btn {
+      padding: .5em 1em;
+      font-size: 1em;
+      background-color: $primary-color;
+      color: white;
+      border-radius: 4px;
+      border: none;
+    }
+  }
+
+  .request-list {
+    .table {
+      @include table();
+
+      tbody tr td span.approval-status {
+        padding: .5em;
+        border-radius: 4px;
+
+        &.info {
+          background-color: $primary-active-color;
+          color: $primary-color;
+        }
+
+        &.approve {
+          background-color: $success-color;
+          color: white;
+        }
+
+        &.reject {
+          background-color: $danger-color;
+          color: $danger-color-text;
+        }
+      }
+    }
+
+    tbody tr td.actions {
+      display: flex;
+      gap: .5em;
+    }
+  }
+
+}

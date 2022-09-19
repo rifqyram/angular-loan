@@ -7,20 +7,18 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <input [formControlName]="formField.email" type="email" name="email" id="email" placeholder="example@mail.com">
-      <input [formControlName]="formField.password" [type]="'password'" name="password" id="password" placeholder="Password">
+      <input [formControlName]="formField.password" [type]="!showPassword ? 'password' : 'text'" name="password" id="password"
+             placeholder="Password">
       <div class="check-show-password">
-        <input type="checkbox" [checked]="hidePassword" name="show-password" id="show-password">
+        <input type="checkbox" (change)="toggleChecked($event)" name="show-password" id="show-password">
         <label for="show-password">Show Password</label>
       </div>
-      <button *ngIf="!loading; else load" class="button-login" type="submit">Register</button>
-      <ng-template #load>
-        <button class="button-login-loading"><app-loading></app-loading></button>
-      </ng-template>
+      <button class="button-register" type="submit" [disabled]="form.invalid">Register</button>
     </form>
 
     <div class="register-btn-container">
       <span>Already have an account?</span>
-      <button class="register-btn" [routerLink]="['/login']">Sign In</button>
+      <button class="login-btn" [routerLink]="['/login']">Sign In</button>
     </div>
   </div>
 </div>

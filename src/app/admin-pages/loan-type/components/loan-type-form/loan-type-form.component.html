@@ -1,6 +1,7 @@
 <div class="loan-type-form">
   <div class="loan-type-form-title">
     <h2>Loan Type Form</h2>
+    <button class="back-btn-list" [routerLink]="['/loan-type']">Back</button>
   </div>
   <form class="lt-form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-container">
@@ -13,13 +14,7 @@
       <input [formControlName]="formField.maxLoan" type="text" name="max-loan" id="max-loan"
              [placeholder]="100000 | currency:'IDR'">
     </div>
-    <ng-container *ngIf="!loading; else load">
-      <button class="submit-loan-type" type="submit">Add</button>
-    </ng-container>
-    <ng-template #load>
-      <button class="submit-loan-type loading" type="submit">
-        <app-loading></app-loading>
-      </button>
-    </ng-template>
+
+    <button class="submit-loan-type" type="submit" [disabled]="form.invalid">{{buttonTitle}}</button>
   </form>
 </div>

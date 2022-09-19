@@ -1,0 +1,16 @@
+<div class="sidenav-container-setting">
+  <div class="title-container">
+    <h2>Settings</h2>
+  </div>
+
+  <ul class="sidenav-nav-setting">
+    <li *ngFor="let data of sidenavData">
+      <div class="tooltip" [tooltip]="data.label">
+        <a class="sidenav-nav-link-setting" [routerLink]="data.path" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <i [ngClass]="data.icon" class="icon"></i>
+          <span class="description">{{data.label}}</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

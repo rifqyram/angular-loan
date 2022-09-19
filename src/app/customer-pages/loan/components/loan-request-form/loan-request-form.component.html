@@ -1,0 +1,41 @@
+<div class="loan-request-content">
+  <div class="loan-request-form-title-container">
+    <h3 class="loan-request-title-form">Loan Form</h3>
+    <button class="back-btn" [routerLink]="['/loan']">Back</button>
+  </div>
+
+  <form class="loan-request-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-container">
+      <label for="loan-type">
+        <span class="label-desc">Loan Type</span>
+        <span class="label-required">*</span>
+      </label>
+      <select [formControlName]="formField.loanType" name="loan-type" id="loan-type">
+        <ng-container *ngIf="loanTypes">
+          <option *ngFor="let data of loanTypes" [value]="data.id">{{data.type}}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="input-container">
+      <label for="instalment-type">
+        <span class="label-desc">Instalment Type</span>
+        <span class="label-required">*</span>
+      </label>
+      <select [formControlName]="formField.instalmentType" name="instalment-type" id="instalment-type">
+        <ng-container *ngIf="instalmentTypes">
+          <option *ngFor="let data of instalmentTypes" [value]="data.id">{{data.name | titlecase}}</option>
+        </ng-container>
+      </select>    </div>
+    <div class="input-container">
+      <label for="nominal">
+        <span class="label-desc">Nominal</span>
+        <span class="label-required">*</span>
+      </label>
+      <input [formControlName]="formField.nominal" type="number" name="nominal" id="nominal">
+    </div>
+
+    <div class="button-container-loan">
+      <button class="request-loan-btn" [disabled]="form.invalid">Submit</button>
+    </div>
+  </form>
+</div>

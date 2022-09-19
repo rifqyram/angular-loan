@@ -1,0 +1,68 @@
+<div class="transaction-detail-container">
+  <div class="transaction-detail-title">
+    <h3 class="trx-detail-title">Transaction Detail</h3>
+    <button [routerLink]="['/loan']" class="transaction-detail-back-btn">Back</button>
+  </div>
+
+  <ng-container *ngIf="transactions">
+    <div class="transaction-detail-container">
+      <table>
+        <tbody>
+        <tr>
+          <td>Customer Name</td>
+          <td>:</td>
+          <td class="desc">{{transactions.customer.firstName}} {{transactions.customer.lastName}}</td>
+        </tr>
+        <tr>
+          <td>Loan Type</td>
+          <td>:</td>
+          <td class="desc">{{transactions.loanType.type}}</td>
+        </tr>
+        <tr>
+          <td>Nominal Loan</td>
+          <td>:</td>
+          <td class="desc">{{transactions.nominal | currency:'IDR'}}</td>
+        </tr>
+        <tr>
+          <td>Approval Status</td>
+          <td>:</td>
+          <td class="desc approval-status">{{transactions.approvalStatus}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-container *ngIf="transactions.transactionDetailResponses.length > 0">
+
+      <div class="transaction-detail-table">
+        <h3>Detail Tenor</h3>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>Nominal</th>
+            <th>Tenor Status</th>
+            <th>Approved At</th>
+            <th>Paid At</th>
+            <th>Guarantee Picture</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of transactions.transactionDetailResponses; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{data.nominal | currency:'IDR'}}</td>
+            <td [ngClass]="loanStatusClass(data.loanStatus)" class="loan-status">{{data.loanStatus}}</td>
+            <td>{{data.createdAt | date:'yyyy-MM-dd'}}</td>
+            <td>{{data.updatedAt | date:'yyyy-MM-dd'}}</td>
+            <td class="guarantee-pic-download"><span class="download-pic" (click)="downloadGuaranteePicture(data.guaranteePicture.url, data.guaranteePicture.name)">{{data.guaranteePicture && 'Download'}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </ng-container>
+
+  </ng-container>
+
+</div>

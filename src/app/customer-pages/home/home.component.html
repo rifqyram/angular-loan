@@ -1,8 +1,8 @@
 <div class="home-container">
-  <div class="message-info info">
+  <div class="message-info info" *ngIf="currentUser?.loanDocuments?.length === 0">
     <span>Please fill your profile data to access resource</span>
   </div>
   <div class="welcome-text-container">
-    <h2>Halo {{currentUser?.firstName === null ? 'New User' : currentUser?.firstName | titlecase}}</h2>
+    <h2>Halo {{currentUser?.firstName !== '' && currentUser?.firstName ? currentUser?.firstName : 'New User'}} {{currentUser?.lastName | titlecase}}</h2>
   </div>
 </div>

@@ -1,73 +1,60 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {LoanType, LoanTypeForm} from "../../model/LoanType";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {LoanType} from "../../model/LoanType";
 import {LoanTypeService} from "../../service/loan-type.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {finalize, switchMap} from "rxjs";
+import {Router} from "@angular/router";
+import Swal from 'sweetalert2';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-loan-type-list',
   templateUrl: './loan-type-list.component.html',
   styleUrls: ['./loan-type-list.component.scss']
 })
-export class LoanTypeListComponent implements OnInit, OnChanges {
-  loanTypes: LoanType[] = [];
-  loading: boolean = false;
+export class LoanTypeListComponent implements OnInit {
+  loanTypes?: LoanType[];
 
   @Input() loanType?: LoanType;
   @Output() loanTypeChange = new EventEmitter<LoanType>();
 
-  constructor(private readonly service: LoanTypeService) {
+  constructor(private readonly service: LoanTypeService,
+              private readonly titleService: Title) {
+    titleService.setTitle('Enigma Loan | Loan Type')
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.service.notify().subscribe(() => {
+      this.getAllLoanType();
+    })
+
+    this.getAllLoanType();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.updateValuesLoanType();
-  }
-
-  getAll(): void {
-    this.loading = true;
-    this.service.getAll().pipe(finalize(() => this.loading = false))
-      .subscribe({
-        next: (val) => this.loanTypes = val.data,
-        error: (err) => console.log(err)
-      })
-  }
-
-  onDelete(id: string): void {
-    if (confirm('Are u sure?')) {
-      this.service.delete(id).pipe(switchMap(() => this.service.getAll())).subscribe({
-        next: () => {
-          const loanType = this.loanTypes.find(value => value.id === id);
-          this.loanTypes = this.loanTypes.filter(val => val.id !== loanType?.id)
-        },
-        error: (err) => console.log(err)
-      });
-    }
-  }
-
-  onSelectLoanType(id?: string): void {
-    if (!id) return;
-
-    this.service.getById(id).subscribe((val) => {
-      this.loanTypeChange.emit(val.data);
+  getAllLoanType(): void {
+    this.service.getAll().subscribe({
+      next: ({data}) => this.loanTypes = data
     })
   }
 
-  updateValuesLoanType() {
-    if (!this.loanType?.id) {
-      this.loanTypes.push(this.loanType!);
-      return;
-    } else {
-      this.loanTypes = this.loanTypes.map(val => {
-        if (val.id === this.loanType?.id) {
-          val = this.loanType!;
-        }
-        return {...val};
-      })
-    }
+  onDelete(id: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure want to delete Loan Type?',
+      showCancelButton: true,
+      confirmButtonColor: 'red'
+    }).then((swal) => {
+      if (swal.isConfirmed) {
+        this.service.delete(id).subscribe({
+          next: () => Swal.fire({
+            icon: 'success',
+            title: 'Successfully Deleted Loan Type',
+          }),
+          error: (err) => Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err.error.message
+          })
+        })
+      }
+    })
   }
-
 }

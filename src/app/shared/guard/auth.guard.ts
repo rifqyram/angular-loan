@@ -10,6 +10,7 @@ import {
 import {catchError, map, Observable, of} from 'rxjs';
 import {AuthService} from "../../auth/service/auth.service";
 import {LoginResponse, Role} from "../../auth/model/IAuth";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         catchError((err) => {
           this.service.clearStorage();
           this.router.navigateByUrl('/login').then();
+          Swal.fire({
+            icon: 'info',
+            title: 'Your session end',
+            text: 'Please login again'
+          }).then();
           return of(false);
         })
       )

@@ -14,21 +14,4 @@
     color: $active-text-color;
   }
 
-  .loan-type-main-content {
-    display: flex;
-    gap: 1em;
-    box-sizing: border-box;
-
-    .loan-type-list-container {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      @include loan-type-container;
-    }
-
-    .loan-type-form-container {
-      width: 400px;
-      @include loan-type-container;
-    }
-  }
 }

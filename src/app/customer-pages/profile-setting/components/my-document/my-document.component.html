@@ -1,0 +1,36 @@
+<div class="my-document-container">
+  <form class="form-my-document-container" (submit)="onSubmit($event)">
+    <h2 class="title-form-my-document">My Document</h2>
+    <h3 class="my-document-title">Upload Document</h3>
+
+    <div class="input-container upload">
+      <label class="label-upload" for="document">
+        <input (change)="onSelectFiles($event)" type="file" name="document" id="document" multiple="multiple">
+        <span class="upload-document-btn">Choose Document</span>
+        <span class="upload-description">Document yang di upload: {{files.length}}</span>
+      </label>
+    </div>
+
+    <div class="input-preview-file">
+      <h3 class="my-document-title">List Upload Document</h3>
+      <ol *ngIf="files.length > 0; else empty">
+        <li *ngFor="let data of files" class="list-item-preview">{{data.name}}</li>
+      </ol>
+      <ng-template #empty>
+        <span>No Data</span>
+      </ng-template>
+    </div>
+
+    <button class="button-submit-upload" type="submit" [disabled]="files.length === 0">Upload Document</button>
+  </form>
+
+
+  <div class="list-document-container">
+    <h3 class="my-document-title">List Document</h3>
+    <ol class="list-document">
+      <li class="document-item" *ngFor="let data of documents">
+        <span class="document-link-download" (click)="downloadDoc(data.id!, data.name!)">{{data.name}}</span>
+      </li>
+    </ol>
+  </div>
+</div>

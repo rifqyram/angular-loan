@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-profile-setting',
@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-setting.component.scss']
 })
 export class ProfileSettingComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
-
 }

@@ -1,0 +1,17 @@
+@import "src/styles";
+
+.profile-setting-container {
+  display: flex;
+  max-width: $max-width;
+  width: $min-width;
+  margin: 0 auto;
+  gap: 1em;
+
+  .sidebar-setting-container {
+    width: 300px;
+  }
+
+  .profile-setting-content {
+    width: 100%;
+  }
+}

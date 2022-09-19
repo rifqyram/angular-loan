@@ -1,10 +1,24 @@
 @import "src/styles";
 
 .loan-type-list {
-  display: grid;
+  background-color: white;
+  padding: 1em;
+  border-radius: 12px;
+  margin-bottom: 1em;
 
   .loan-type-list-title {
     color: $text-color;
+    display: flex;
+    justify-content: space-between;
+
+    .add-btn-loan-type {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: .5em 1em;
+      font-size: 1em;
+      border-radius: 4px;
+    }
   }
 
   .table {

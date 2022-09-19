@@ -20,11 +20,11 @@
       <span>Online</span>
     </div>
     <div class="user-profile">
-      <img *ngIf="currentUser; else noUser" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="">
+      <img *ngIf="currentCustomer?.profilePicture; else noUser" [src]="currentCustomer?.profilePicture?.url" alt="{{currentCustomer?.firstName}}">
       <ng-template #noUser><i class="bi bi-person icon"></i></ng-template>
     </div>
     <div class="user-setting">
-      <span [routerLink]="['/profile-setting']">View Profile</span>
+      <span [routerLink]="['/setting']">View Profile</span>
     </div>
     <div class="user-logout">
       <span class="logout-text" (click)="onLogout()">Logout</span>

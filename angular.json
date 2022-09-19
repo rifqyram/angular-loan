@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sweetalert2"
+            ],
             "outputPath": "dist/loan_frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,9 +32,11 @@
             ],
             "styles": [
               "./node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "./node_modules/ngx-simple-modal/styles/simple-modal.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -106,7 +111,9 @@
               "./node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }

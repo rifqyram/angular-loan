@@ -3,9 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CustomerPagesComponent} from "./customer-pages.component";
 import {AuthGuard} from "../shared/guard/auth.guard";
 import {CustomerGuard} from "../shared/guard/customer.guard";
-import {LoanComponent} from "./loan/loan.component";
 import {AboutComponent} from "./about/about.component";
-import {ProfileSettingComponent} from "./profile-setting/profile-setting.component";
 import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
@@ -16,9 +14,9 @@ const routes: Routes = [
     canActivateChild: [AuthGuard, CustomerGuard],
     children: [
       {path: '', component: HomeComponent},
-      {path: 'loan', component: LoanComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'profile-setting', component: ProfileSettingComponent}
+      {path: '', loadChildren: () => import('./loan/loan-routing.module').then(m => m.LoanRoutingModule)},
+      {path: '', loadChildren: () => import('./profile-setting/profile-setting-routing.module').then(m => m.ProfileSettingRoutingModule)},
+      {path: 'about', component: AboutComponent}
     ]
   }
 ];

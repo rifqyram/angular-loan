@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../profile-setting/service/customer.service";
-import {ICustomer} from "../../auth/model/ICustomer";
+import {CustomerResponse} from "../profile-setting/model/Customer";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,11 @@ import {ICustomer} from "../../auth/model/ICustomer";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  currentUser?: Partial<ICustomer>;
-  booa: boolean = false
+  currentUser?: CustomerResponse;
 
-  constructor(private readonly service: CustomerService) {
-    console.log(this.booa)
+  constructor(private readonly service: CustomerService,
+              private readonly titleService: Title) {
+    titleService.setTitle('Enigma Loan | Home')
   }
 
   ngOnInit(): void {
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit {
   getCustomerFromToken(): void {
     this.service.getCustomerFromToken().subscribe({
       next: ({data}) => {
-        console.log(data)
         this.currentUser = data
       },
     })

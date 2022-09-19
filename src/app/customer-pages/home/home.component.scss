@@ -1,7 +1,7 @@
 @import "src/styles";
 
 :host {
-  width: 90%;
+  width: $min-width;
 }
 
 .home-container {
@@ -9,8 +9,8 @@
   flex-direction: column;
   gap: 1em;
   margin: 0 auto;
-  width: 90%;
-  max-width: 1220px;
+  width: $min-width;
+  max-width: $max-width;
   background-color: white;
   padding: 1em;
   border-radius: 8px;

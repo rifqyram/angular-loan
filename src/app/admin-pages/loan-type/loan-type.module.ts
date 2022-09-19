@@ -6,6 +6,8 @@ import { LoanTypeListComponent } from './components/loan-type-list/loan-type-lis
 import { LoanTypeFormComponent } from './components/loan-type-form/loan-type-form.component';
 import {SharedModule} from "../../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {LoanTypeRoutingModule} from "./loan-type-routing.module";
+import {Title} from "@angular/platform-browser";
 
 
 
@@ -19,7 +21,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     HttpClientModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    LoanTypeRoutingModule
+  ],
 })
 export class LoanTypeModule { }

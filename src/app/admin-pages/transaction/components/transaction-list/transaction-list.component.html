@@ -1,0 +1,57 @@
+<div class="transaction-list-container">
+  <h2>Loan Transaction List</h2>
+
+  <ng-container *ngIf="transactions && paginate">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Customer Name</th>
+        <th>Loan Type</th>
+        <th>Instalment Type</th>
+        <th>Approval Status</th>
+        <th>Transaction Date</th>
+        <th>Approved By</th>
+        <th>Approved Date</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of transactions | paginate: {itemsPerPage: paginate.size, currentPage: currentPaginate['page'], totalItems: paginate.count} ; let i = index">
+        <td>{{(currentPaginate['page'] - 1) * paginate.size + (i + 1)}}</td>
+        <td>{{data.customer.firstName}} {{data.customer.lastName}}</td>
+        <td>{{data.loanType.type}}</td>
+        <td>{{data.instalmentType.name}}</td>
+        <td><span [ngClass]="statusClass(data.approvalStatus)" class="approval-status">{{data.approvalStatus}}</span>
+        </td>
+        <td>{{data.createdAt | date:'yyyy-MM-dd'}}</td>
+        <td>{{data.approvedBy}}</td>
+        <td>{{data.approvedAt | date:'yyyy-MM-dd'}}</td>
+        <td class="actions">
+            <span [ngClass]="statusClass(data.approvalStatus)" class="detail-action"
+                  [swal]="{
+                    title: 'Approval Status',
+                    icon: 'question',
+                    input: 'number',
+                    inputLabel: 'Interest Rates(any%)',
+                    inputPlaceholder: '5%',
+                    showDenyButton: true,
+                    denyButtonText: 'Reject',
+                    confirmButtonText: 'Approve' ,
+                    showCancelButton: true }"
+                  (confirm)="onApproved(data.id, $event)"
+                  (deny)="onRejected(data.id)">Action
+            </span>
+          <span class="detail" [routerLink]="['detail', data.id]">Details</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </ng-container>
+</div>

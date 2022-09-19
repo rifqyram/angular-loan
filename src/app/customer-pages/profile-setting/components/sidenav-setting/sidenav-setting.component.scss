@@ -1,0 +1,34 @@
+@import "src/styles";
+
+.sidenav-container-setting {
+  margin: 1em auto;
+  padding: 1em;
+
+  .title-container {
+    color: $active-text-color;
+  }
+
+  .sidenav-nav-setting {
+    margin-top: 1em;
+    display: grid;
+    list-style: none;
+    gap: 1em;
+
+    .tooltip {
+      .sidenav-nav-link-setting {
+        display: flex;
+        gap: 1em;
+        font-size: 1.2em;
+        text-decoration: none;
+        color: #333;
+        padding: .5em;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &.active, &:hover {
+          background-color: #d1d2d3;
+        }
+      }
+    }
+  }
+}

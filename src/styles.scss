@@ -12,6 +12,9 @@ $success-color: #71DD37;
 $danger-color: #FF3E1D;
 $danger-color-text: #ffe2e2;
 
+$max-width: 1440px;
+$min-width: 90%;
+
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +24,13 @@ $danger-color-text: #ffe2e2;
 body {
   font-family: 'Public Sans', sans-serif;
   background-color: $background-color;
+}
+
+@mixin disable-button {
+  background-color: $background-color;
+  cursor: not-allowed;
+  color: #333;
+  transition: .25s ease;
 }
 
 .tooltip-container {
@@ -87,6 +97,12 @@ body {
   }
 }
 
+.ngx-pagination .current,
+.btn-info {
+  background: $primary-color !important;
+  border: transparent !important;
+  border-radius: 4px !important;
+}
 
 @keyframes tooltip-slide {
   0% {

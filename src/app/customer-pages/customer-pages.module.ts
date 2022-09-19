@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { CustomerPagesRoutingModule } from './customer-pages-routing.module';
-import { CustomerPagesComponent } from './customer-pages.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CustomerPagesComponent} from './customer-pages.component';
 import {SharedModule} from "../shared/shared.module";
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
-import { LoanComponent } from './loan/loan.component';
-import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
-import {CustomerService} from "./profile-setting/service/customer.service";
+import {AboutComponent} from './about/about.component';
+import {HomeComponent} from './home/home.component';
+import {LoanModule} from "./loan/loan.module";
+import {CustomerPagesRoutingModule} from "./customer-pages-routing.module";
+import {ProfileSettingModule} from "./profile-setting/profile-setting.module";
 
 
 @NgModule({
@@ -16,14 +14,14 @@ import {CustomerService} from "./profile-setting/service/customer.service";
     CustomerPagesComponent,
     AboutComponent,
     HomeComponent,
-    LoanComponent,
-    ProfileSettingComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    CustomerPagesRoutingModule
+    LoanModule,
+    CustomerPagesRoutingModule,
+    ProfileSettingModule
   ],
-  providers: [CustomerService]
 })
-export class CustomerPagesModule { }
+export class CustomerPagesModule {
+}

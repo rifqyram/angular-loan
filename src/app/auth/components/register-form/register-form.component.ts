@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthForm, AuthRequest} from "../../model/IAuth";
 import {AuthService} from "../../service/auth.service";
-import {finalize} from "rxjs";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-register-form',
@@ -13,10 +14,13 @@ import {Router} from "@angular/router";
 export class RegisterFormComponent implements OnInit {
   form!: FormGroup;
   formField: typeof AuthForm = AuthForm;
-  loading: boolean = false;
-  hidePassword: boolean = true;
+  showPassword: boolean = false;
 
-  constructor(private readonly service: AuthService, private router: Router) {
+
+  constructor(private readonly service: AuthService,
+              private readonly router: Router,
+              private readonly titleService: Title) {
+    titleService.setTitle('Enigma Loan | Register')
   }
 
   ngOnInit(): void {
@@ -27,22 +31,26 @@ export class RegisterFormComponent implements OnInit {
     const {email, password} = this.formField;
     this.form = new FormGroup({
       [email]: new FormControl(null, [Validators.required, Validators.email]),
-      [password]: new FormControl(null, [Validators.required, Validators.email, Validators.min(6)])
+      [password]: new FormControl(null, [Validators.required, Validators.min(6)])
     })
   }
 
   onSubmit(): void {
     const data: AuthRequest = this.form.value;
-    this.loading = true;
     this.service.register(data)
-      .pipe(finalize(() => this.loading = false))
       .subscribe({
-        next: async (val) => {
-          console.log(val)
+        next: (val) => {
           this.clearForm();
-          await this.router.navigateByUrl('/login');
+          Swal.fire({
+            icon: 'success',
+            title: 'Successfully Register',
+          }).then(() => this.router.navigateByUrl('/login'))
         },
-        error: (err) => console.log(err),
+        error: (err) => Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.error.message
+        }),
       })
   }
 
@@ -50,4 +58,7 @@ export class RegisterFormComponent implements OnInit {
     this.form.reset();
   }
 
+  toggleChecked(event: any) {
+    this.showPassword = event.target.checked;
+  }
 }

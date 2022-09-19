@@ -1,4 +1,4 @@
 export interface InstalmentType {
   id: string,
-  instalmentType: string
+  name: string
 }

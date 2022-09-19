@@ -21,9 +21,4 @@ export const navData: INavData[] = [
     icon: 'bi bi-cash',
     label: 'Transaction'
   },
-  {
-    path: 'setting',
-    icon: 'bi bi-gear',
-    label: 'Setting'
-  },
 ]

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InstalmentTypeService} from "../../service/instalment-type.service";
 import {InstalmentType} from "../../model/InstalmentType";
 import {finalize, switchMap} from "rxjs";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-instalment-type-list',
@@ -10,21 +11,23 @@ import {finalize, switchMap} from "rxjs";
 })
 export class InstalmentTypeListComponent implements OnInit {
   instalmentTypes: InstalmentType[] = [];
-  loading: boolean = false;
   error: any;
 
-  constructor(private readonly service: InstalmentTypeService) {}
+  constructor(private readonly service: InstalmentTypeService,
+              private readonly titleService: Title) {
+    titleService.setTitle('Enigma Loan | Instalment Type')
+  }
 
   ngOnInit(): void {
-    if (!this.loading) {
       this.getAll()
-    }
   }
 
   getAll(): void {
-    this.loading = true;
-    this.service.getAll().pipe(finalize(() => this.loading = false)).subscribe({
-      next: ({data}) => this.instalmentTypes = data,
+    this.service.getAll().subscribe({
+      next: ({data}) => {
+        console.log(data);
+        this.instalmentTypes = data
+      },
       error: (err) => this.error = err
     })
   }

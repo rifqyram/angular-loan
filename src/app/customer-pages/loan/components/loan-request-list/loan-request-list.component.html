@@ -1,0 +1,59 @@
+<div class="loan-request-list-container">
+  <div class="loan-request-list-title">
+    <h3 class="title-text">List Request</h3>
+    <button class="create-request-btn" [routerLink]="['request']">Create Request</button>
+  </div>
+
+  <div class="request-list">
+    <div *ngIf="loans && paginate" class="table-request-container">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Loan Type</th>
+          <th>Instalment Type</th>
+          <th>Nominal</th>
+          <th>Approval Status</th>
+          <th>Transaction Date</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor="let data of loans | paginate: {itemsPerPage: paginate.size, currentPage: currentPaginate['page'], totalItems: paginate.count}; let i = index">
+          <td>{{ (currentPaginate['page'] - 1) * paginate.size + (i + 1)}}</td>
+          <td>{{data.loanType.type}}</td>
+          <td>{{data.instalmentType.name}}</td>
+          <td>{{data.nominal | currency:'IDR'}}</td>
+          <td><span
+            [ngClass]="statusClass(data.approvalStatus)"
+            class="approval-status">{{data.approvalStatus | titlecase}}</span>
+          </td>
+          <td>{{data.createdAt | date:'yyyy-MM-dd'}}</td>
+          <td class="actions">
+            <span [routerLink]="['detail', data.id]" class="link-detail">Detail</span>
+            <span
+              *ngIf="data.approvalStatus === 'Approved'"
+              [swal]="{
+                    title: 'Paid Tenor',
+                    icon: 'question',
+                    input: 'file',
+                    inputLabel: 'Please attach guarantee picture',
+                    confirmButtonText: 'Submit' ,
+                    showCancelButton: true
+                    }"
+              (confirm)="onSubmit(data.id, $event)"
+            >Paid</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+
+</div>

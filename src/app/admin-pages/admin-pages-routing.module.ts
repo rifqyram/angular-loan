@@ -6,6 +6,7 @@ import {LoanTypeComponent} from "./loan-type/loan-type.component";
 import {AdminPagesComponent} from "./admin-pages.component";
 import {AuthGuard} from "../shared/guard/auth.guard";
 import {AdminGuard} from "../shared/guard/admin.guard";
+import {TransactionComponent} from "./transaction/transaction.component";
 
 const routes: Routes = [
   {
@@ -16,9 +17,8 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DahsboardComponent},
       {path: 'instalment-type', component: InstalmentTypeComponent},
-      {path: 'loan-type', component: LoanTypeComponent},
-      // {path: 'transaction',},
-      // {path: 'setting',},
+      {path: '', loadChildren: () => import('./loan-type/loan-type-routing.module').then(m => m.LoanTypeRoutingModule)},
+      {path: '', loadChildren: () => import('./transaction/transaction-routing.module').then(m => m.TransactionRoutingModule)},
     ]
   }
 ];

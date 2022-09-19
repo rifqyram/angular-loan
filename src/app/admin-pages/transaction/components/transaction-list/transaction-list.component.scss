@@ -1,0 +1,61 @@
+@import "src/styles";
+
+.transaction-list-container {
+  color: $active-text-color;
+  background-color: white;
+  padding: 1em;
+  border-radius: 12px;
+  margin-bottom: 1em;
+
+
+  .table {
+    @include table();
+
+    tbody tr td span.approval-status {
+      padding: .5em;
+      border-radius: 4px;
+
+      &.info {
+        background-color: $primary-active-color;
+        color: $primary-color;
+      }
+
+      &.approve {
+        background-color: $success-color;
+        color: white;
+      }
+
+      &.reject {
+        background-color: $danger-color;
+        color: $danger-color-text;
+      }
+    }
+
+    tbody tr td.actions {
+      display: flex;
+      gap: .5em;
+
+      span {
+        cursor: pointer;
+      }
+
+      .detail-action {
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.approve, &.reject {
+          display: none;
+        }
+      }
+
+      .detail {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+  }
+}

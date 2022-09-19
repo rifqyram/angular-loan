@@ -1,0 +1,72 @@
+@import "src/styles";
+
+.loan-request-content {
+  margin: 1em 0;
+
+  .loan-request-form-title-container {
+    display: flex;
+    justify-content: space-between;
+
+    .loan-request-title-form {
+      margin-bottom: .5em;
+    }
+
+    .back-btn {
+      padding: .5em 1em;
+      font-size: 1em;
+      background-color: $primary-color;
+      color: white;
+      border-radius: 4px;
+      border: none
+    }
+  }
+
+  .loan-request-form {
+
+    .input-container {
+      display: grid;
+      width: 600px;
+      gap: .5em;
+
+      label {
+        margin-top: 1em;
+
+        .label-required {
+          color: $danger-color;
+        }
+      }
+
+      input, select {
+        padding: .5em 1em;
+        font-size: .9em;
+        color: $text-color;
+        border: 1px solid #333;
+        border-radius: 4px;
+        outline: none;
+        background-color: white;
+
+        option {
+          padding: .5em;
+        }
+      }
+    }
+
+    .button-container-loan {
+      margin: 1em 0;
+      .request-loan-btn {
+        width: 200px;
+        padding: .5em 1em;
+        font-size: 1em;
+        font-weight: bold;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+
+        &:disabled {
+          @include disable-button();
+        }
+      }
+    }
+  }
+}

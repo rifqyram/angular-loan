@@ -1,0 +1,43 @@
+<div class="user-profile-container">
+  <form class="form-profile-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <h2 class="title-form-profile">User Profile</h2>
+    <h3 class="profile-title">Profile Picture</h3>
+    <div class="input-container pic-input">
+      <img class="profile-picture-img" *ngIf="previewImage; else noCustomer"
+           [src]="previewImage" alt="Avatar">
+      <ng-template #noCustomer><i class="bi bi-person icon"></i></ng-template>
+      <label>
+        <input (change)="selectAvatar($event)" type="file" name="profile-picture" id="profile-picture">
+        <span class="button-upload">Choose Photo</span>
+        <span>Gambar Profile Anda sebaiknya dengan rasio 1:1</span>
+        <span>dan berukuran tidak lebih dari 2MB</span>
+      </label>
+    </div>
+
+    <div class="input-container firstname">
+      <label class="label-desc" for="firstname">First Name <span class="required-label">*</span></label>
+      <input [formControlName]="formField.firstName" type="text" name="firstname" id="firstname" placeholder="John">
+    </div>
+
+    <div class="input-container lastname">
+      <label class="label-desc" for="lastname">Last Name <span class="required-label">*</span></label>
+      <input [formControlName]="formField.lastName" type="text" name="lastname" id="lastname" placeholder="Doe">
+    </div>
+
+    <div class="input-container birthdate">
+      <label class="label-desc" for="birthdate">Birthdate</label>
+      <input [formControlName]="formField.dateOfBirth" type="date" name="birthdate" id="birthdate">
+    </div>
+
+    <div class="input-container phone">
+      <label class="label-desc" for="phone">Phone Number <span class="required-label">*</span></label>
+      <input [formControlName]="formField.phone" type="text" name="phone" id="phone" placeholder="0812xxx">
+    </div>
+
+    <div class="submit-profile">
+      <button class="submit-profile-btn" [disabled]="form.invalid">Save</button>
+    </div>
+
+  </form>
+</div>

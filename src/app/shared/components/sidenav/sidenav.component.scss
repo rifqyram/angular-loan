@@ -53,10 +53,12 @@
     border-radius: 8px;
     color: $text-color;
     text-decoration: none;
+    transition: .25s ease;
 
     &.active, &:hover {
       background-color: $primary-active-color;
       color: $primary-color;
+      transition: .25s ease;
     }
 
     .icon {
@@ -81,16 +83,6 @@
       font-size: 18px;
       transition: .3s ease;
       color: $text-color;
-
-      .sidenav-nav-list-sub {
-        list-style: none;
-
-        .sidenav-nav-list-sub-item {
-          .sidenav-nav-sub-link {
-            white-space: nowrap;
-          }
-        }
-      }
     }
   }
 }
@@ -99,6 +91,7 @@
   .logout-sidenav {
     display: flex;
     list-style: none;
+    width: 100%;
     color: $text-color;
     flex-grow: 1;
     align-items: flex-end;
@@ -106,5 +99,10 @@
     cursor: pointer;
 
     @include sidenav-nav;
+
+    .sidenav-nav-logout {
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 }

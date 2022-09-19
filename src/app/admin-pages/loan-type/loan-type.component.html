@@ -3,13 +3,5 @@
     <h2>Loan Type</h2>
   </div>
 
-  <div class="loan-type-main-content">
-    <div class="loan-type-list-container">
-      <app-loan-type-list [(loanType)]="loanType"></app-loan-type-list>
-    </div>
-
-    <div class="loan-type-form-container">
-      <app-loan-type-form [(loanType)]="loanType" ></app-loan-type-form>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

@@ -1,38 +1,36 @@
 <div class="loan-type-list">
   <div class="loan-type-list-title">
     <h2>Loan Type List</h2>
+    <button class="add-btn-loan-type" [routerLink]="['/loan-type/create']">Add Loan Type</button>
   </div>
 
-  <ng-container *ngIf="!loading && loanTypes.length > 0; else load">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>No.</th>
-      <th>Loan Type</th>
-      <th>Max Loan</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
+  <ng-container *ngIf="loanTypes">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>Loan Type</th>
+        <th>Max Loan</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
       <tr class="table-data" *ngFor="let data of loanTypes; let i = index">
         <td>{{i + 1}}</td>
         <td>{{data.type}}</td>
         <td>{{data.maxLoan | currency:'IDR'}}</td>
         <td class="actions">
           <div class="tooltip" tooltip="Update">
-            <button class="loan-type-btn-update" (click)="onSelectLoanType(data.id!)"><i class="bi bi-pencil"></i></button>
+            <button class="loan-type-btn-update" [routerLink]="['update', data.id]"><i class="bi bi-pencil"></i>
+            </button>
           </div>
           <div class="tooltip" tooltip="Delete">
             <button class="loan-type-btn-delete" (click)="onDelete(data.id!)"><i class="bi bi-trash"></i></button>
           </div>
         </td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   </ng-container>
-
-  <ng-template #load>
-    <app-loading></app-loading>
-  </ng-template>
 
 </div>

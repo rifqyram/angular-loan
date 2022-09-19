@@ -67,6 +67,11 @@
         border: none;
         border-radius: 8px;
         font-size: 1em;
+        transition: .25s ease;
+
+        &:disabled {
+          @include disable-button();
+        }
       }
 
       .button-login-loading {
@@ -97,6 +102,7 @@
         border-radius: 8px;
         font-size: 1em;
         cursor: pointer;
+
       }
     }
   }

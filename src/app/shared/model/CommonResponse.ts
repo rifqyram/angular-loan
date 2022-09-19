@@ -1,6 +1,6 @@
 export interface CommonResponse<T> {
   code: number;
-  status: string;
+  status: string
   message: string;
   data: T
 }
